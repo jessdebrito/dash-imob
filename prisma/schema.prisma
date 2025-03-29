@@ -1,0 +1,203 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Store {
+  id         String      @id @default(uuid())
+  name       String
+  userId     String
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  billboards Billboard[] @relation("StoreToBillboard")
+  orders     Order[]     @relation("StoreToOrder")
+  categories Category[]  @relation("StoreToCategory")
+  products   Product[]   @relation("StoreToProduct")
+  sizes      Size[]      @relation("StoreToSize")
+  rooms      Room[]      @relation("StoreToRoom")
+  colors     Color[]     @relation("StoreToColor")
+  adtype     Adtype[]    @relation("StoreToAdtype")
+  bathroom   Bathroom[]  @relation("StoreToBathroom")
+}
+
+model Billboard {
+  id         String     @id @default(uuid())
+  storeId    String
+  label      String
+  imageUrl   String
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  store      Store      @relation("StoreToBillboard", fields: [storeId], references: [id])
+  categories Category[]
+  Adtype     Adtype[]
+
+  @@index([storeId])
+}
+
+model Category {
+  id          String    @id @default(uuid())
+  storeId     String
+  billboardId String
+  name        String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  store       Store     @relation("StoreToCategory", fields: [storeId], references: [id])
+  billboard   Billboard @relation(fields: [billboardId], references: [id])
+  products    Product[] @relation("CategoryToProduct")
+
+  @@index([storeId])
+  @@index([billboardId])
+}
+
+model Adtype {
+  id          String    @id @default(uuid())
+  storeId     String
+  billboardId String
+  name        String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  store       Store     @relation("StoreToAdtype", fields: [storeId], references: [id])
+  billboard   Billboard @relation(fields: [billboardId], references: [id])
+  products    Product[] @relation("AdtypeToProduct")
+
+  @@index([storeId])
+  @@index([billboardId])
+}
+
+model Product {
+  id              String      @id @default(uuid())
+  storeId         String
+  categoryId      String
+  name            String
+  location        String
+  description     String
+  price           Decimal
+  parking         Int
+  petFriendly     Boolean     @default(false)
+  addSpace        Boolean     @default(false)
+  sizeId          String
+  roomId          String
+  bathroomId      String
+  adtypeId        String
+  colorId         String
+  builtYear       String
+  renovationYear  String
+  heating         Boolean     @default(false)
+  airConditioning Boolean     @default(false)
+  fireplace       Boolean     @default(false)
+  ventilation     Boolean     @default(false)
+  intercom        Boolean     @default(false)
+  cableTv         Boolean     @default(false)
+  elevator        Boolean     @default(false)
+  internet        Boolean     @default(false)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  isArchived      Boolean     @default(false)
+  isFeatured      Boolean     @default(false)
+  store           Store       @relation("StoreToProduct", fields: [storeId], references: [id])
+  category        Category    @relation("CategoryToProduct", fields: [categoryId], references: [id])
+  size            Size        @relation(fields: [sizeId], references: [id])
+  room            Room        @relation(fields: [roomId], references: [id])
+  bathroom        Bathroom    @relation(fields: [bathroomId], references: [id])
+  adtype          Adtype      @relation("AdtypeToProduct", fields: [adtypeId], references: [id])
+  color           Color       @relation(fields: [colorId], references: [id])
+  images          Image[]
+  orderItems      OrderItem[]
+
+  @@index([storeId])
+  @@index([categoryId])
+  @@index([sizeId])
+  @@index([colorId])
+}
+
+model Order {
+  id         String      @id @default(uuid())
+  storeId    String
+  isPaid     Boolean     @default(false)
+  phone      String      @default("")
+  address    String      @default("")
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  store      Store       @relation("StoreToOrder", fields: [storeId], references: [id])
+  orderItems OrderItem[]
+
+  @@index([storeId])
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  productId String
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+model Size {
+  id        String    @id @default(uuid())
+  storeId   String
+  name      String
+  value     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  store     Store     @relation("StoreToSize", fields: [storeId], references: [id])
+  products  Product[]
+
+  @@index([storeId])
+}
+
+model Room {
+  id        String    @id @default(uuid())
+  storeId   String
+  name      String
+  value     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  store     Store     @relation("StoreToRoom", fields: [storeId], references: [id])
+  products  Product[]
+
+  @@index([storeId])
+}
+
+model Bathroom {
+  id        String    @id @default(uuid())
+  storeId   String
+  name      String
+  value     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  store     Store     @relation("StoreToBathroom", fields: [storeId], references: [id])
+  products  Product[]
+
+  @@index([storeId])
+}
+
+model Color {
+  id        String    @id @default(uuid())
+  storeId   String
+  name      String
+  value     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  store     Store     @relation("StoreToColor", fields: [storeId], references: [id])
+  products  Product[]
+
+  @@index([storeId])
+}
+
+model Image {
+  id        String   @id @default(uuid())
+  productId String
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+}
