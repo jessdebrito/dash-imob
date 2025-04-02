@@ -1,12 +1,7 @@
 import React from "react";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 import BgLoginPage from "@/public/images/bg-login-page3.jpg";
-
-import BgGradiant from "@/public/images/hypercolor-gradient.jpeg";
-
-import DashLogo from "@/public/images/favicon.ico";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -16,15 +11,8 @@ interface AuthLayoutProps {
 const AuthLayout = ({ children, className }: AuthLayoutProps) => {
   return (
     <div className="min-h-screen w-full h-full md:p-10  flex items-center justify-center bg-neutral-200">
-       {/* <Image
-        src={BgGradiant}
-        alt="Login page image"
-        className="absolute inset-0 w-full h-full object-cover animate-pulse-slow"
-        priority
-      /> */}
     
         <div className="grid md:grid-cols-2 h-full md:w-full md:h-full ">
-          {/* Imagem (escondida no mobile) */}
           <div className="relative hidden md:block h-full ">
             <Image
               src={BgLoginPage}
@@ -44,9 +32,7 @@ const AuthLayout = ({ children, className }: AuthLayoutProps) => {
             </div>
           </div>
 
-          {/* Conteúdo */}
           <div className="backdrop-blur-sm py-4 sm:p-8 md:mt-26 flex flex-col items-center max-w-sm mx-auto">
-            {/* Imagem para mobile */}
             <div className="md:hidden w-full h-60 sm:h-60 rounded-xl mb-3 bg-cover bg-center relative overflow-hidden">
               <Image
                 src={BgLoginPage}
