@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { useParams, usePathname } from "next/navigation";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 import Image from "next/image";
@@ -135,7 +134,6 @@ export function NavigationMainMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-
         <NavigationMenuItem>
           <NavigationMenuTrigger>Componentes</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -151,14 +149,6 @@ export function NavigationMainMenu() {
               ))}
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

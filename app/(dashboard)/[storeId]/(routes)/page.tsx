@@ -34,12 +34,12 @@ const DashboardPage = async ({
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
               <CardTitle className="text-sm font-medium">
-                Receita Total
+                Receita
               </CardTitle>
               <DollarSign className="w-4 h-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-lg md:text-2xl font-bold">
                 {formatter.format(totalRevenue)}
               </div>
             </CardContent>
@@ -50,18 +50,18 @@ const DashboardPage = async ({
               <CreditCard className="w-4 h-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">+{salesCount}</div>
+              <div className="text-lg md:text-2xl font-bold">+{salesCount}</div>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
               <CardTitle className="text-sm font-medium">
-                Produtos em estoque
+                Estoque
               </CardTitle>
               <Package className="w-4 h-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stockCount}</div>
+              <div className="text-lg md:text-2xl font-bold">{stockCount}</div>
             </CardContent>
           </Card>
         </div>

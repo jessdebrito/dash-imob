@@ -13,7 +13,7 @@ const Footer = () => {
             alt="Logo Gênio de pele azul e braços cruzados"
             className="w-20"
           />
-          <h2 className="self-center text-3xl font-semibold whitespace-nowrap">
+          <h2 className="self-center text-2xl md:text-3xl font-semibold whitespace-nowrap">
             GENIE | Dashboard e CMS
           </h2>
         </Link>
@@ -25,7 +25,7 @@ const Footer = () => {
 
       </div>
 
-      <div className="border-t border-gray-300 pt-4 w-full flex flex-row justify-between text-sm">
+      <div className="border-t border-gray-300 pt-4 w-full flex flex-col md:flex-row justify-between text-center md:text-sm">
         <p className="mb-1">All Rights Reserved © 2025</p>
         <p>
           Desenvolvido por{" "}
