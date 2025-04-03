@@ -82,7 +82,7 @@ export const AdtypeForm: React.FC<SettingsFromProps> = ({
       router.push(`/${params.storeId}/adtypes`);
       toast.success(toastMessage);
     } catch (err) {
-      toast.error("Algo deu errado.");
+      toast.error(err instanceof Error ? err.message : "Algo deu errado.");
     } finally {
       setLoading(false);
     }

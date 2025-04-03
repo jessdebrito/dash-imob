@@ -5,10 +5,9 @@ import BgLoginPage from "@/public/images/bg-login-page3.jpg";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
-  className?: string;
 }
 
-const AuthLayout = ({ children, className }: AuthLayoutProps) => {
+const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <div className="min-h-screen w-full h-full md:p-10  flex items-center justify-center bg-neutral-200">
     
@@ -25,7 +24,7 @@ const AuthLayout = ({ children, className }: AuthLayoutProps) => {
               <div className="text-3xl font-bold">Boas vindas ao Genie!</div>
               <div className="max-w-xs">
                 <p className="text-white/80 mb-4">
-                  "O gênio que administra a sua loja de forma segura e rápida."
+                  &quot;O gênio que administra a sua loja de forma segura e rápida.&quot;
                 </p>
                 <p className="text-white/60 text-sm">— John Doe</p>
               </div>

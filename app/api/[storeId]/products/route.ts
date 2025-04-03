@@ -140,8 +140,7 @@ export async function GET(
         sizeId,
         roomId,
         bathroomId,
-        isFeatured: false,
-        isArchived: false,
+        isFeatured: isFeatured ? true : false,
       },
       include: {
         images: true,

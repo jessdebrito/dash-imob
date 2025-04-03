@@ -2,8 +2,13 @@
 
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
+interface GraphData {
+  name: string;
+  total: number;
+}
+
 interface OverviewProps {
-  data: any[];
+  data: GraphData[];
 }
 
 export const Overview: React.FC<OverviewProps> = ({ data }) => {
