@@ -157,7 +157,7 @@ export const ProductForm: React.FC<ProductFromProps> = ({
       router.push(`/${params.storeId}/products`);
       toast.success(toastMessage);
     } catch (err) {
-      toast.error("Algo deu errado.");
+      toast.error(err instanceof Error ? err.message : "Algo deu errado.");
     } finally {
       setLoading(false);
     }
@@ -171,7 +171,9 @@ export const ProductForm: React.FC<ProductFromProps> = ({
       router.push(`/${params.storeId}/products`);
       toast.success("Produto deletado.");
     } catch (err) {
-      toast.error("Algo deu errado.");
+      toast.error(
+        err instanceof Error ? err.message : "Algo deu errado ao deletar o produto."
+      );
     } finally {
       setLoading(false);
       setOpen(false);

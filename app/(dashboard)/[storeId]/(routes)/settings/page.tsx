@@ -3,14 +3,11 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { SettingsForm } from "./components/settings-form";
 
-interface SettingsPageProps {
-  params: {
-    storeId: string;
-  };
-}
-
-const SettingsPage: React.FC<SettingsPageProps> = async ({ params }) => {
-  const { storeId } = await params;
+export default async function SettingsPage({
+  params,
+}: {
+  params: { storeId: string };
+}) {
   const { userId } = await auth();
 
   if (!userId) {
@@ -19,7 +16,7 @@ const SettingsPage: React.FC<SettingsPageProps> = async ({ params }) => {
 
   const store = await prismadb.store.findFirst({
     where: {
-      id: storeId,
+      id: params.storeId,
       userId,
     },
   });
@@ -35,6 +32,4 @@ const SettingsPage: React.FC<SettingsPageProps> = async ({ params }) => {
         </div>
     </div>
   );
-};
-
-export default SettingsPage;
+}

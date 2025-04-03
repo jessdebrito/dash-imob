@@ -97,7 +97,7 @@ export const AdtypeForm: React.FC<SettingsFromProps> = ({
       router.refresh();
       router.push(`/${params.storeId}/adtypes`);
       toast.success("Categoria deletada.");
-    } catch (err) {
+    } catch {
       toast.error("Certifiqui-se de remover todos os vinculos com produtos.");
     } finally {
       setLoading(false);

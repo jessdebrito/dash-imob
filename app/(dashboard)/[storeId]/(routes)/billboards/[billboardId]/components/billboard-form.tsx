@@ -72,7 +72,7 @@ export const BillboardForm: React.FC<SettingsFromProps> = ({ initialData }) => {
       router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (err) {
-      toast.error("Algo deu errado.");
+      toast.error(err instanceof Error ? err.message : "Algo deu errado.");
     } finally {
       setLoading(false);
     }
@@ -89,7 +89,7 @@ export const BillboardForm: React.FC<SettingsFromProps> = ({ initialData }) => {
       toast.success("Anúncio deletado.");
     } catch (err) {
       toast.error(
-        "Certifiqui-se de remover todas as categorias primeiro."
+        err instanceof Error ? err.message : "Certifiqui-se de remover todas as categorias primeiro."
       );
     } finally {
       setLoading(false);

@@ -55,7 +55,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       router.refresh();
       toast.success("Alterações salvas.");
     } catch (err) {
-      toast.error("Algo deu errado.");
+      toast.error(err instanceof Error ? err.message : "Algo deu errado.");
     } finally {
       setLoading(false);
     }
@@ -69,7 +69,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       router.push("/");
       toast.success("Loja deletada.");
     } catch (error) {
-      toast.error("Remova todos os produtos e categorias primeiro.");
+      toast.error(error instanceof Error ? error.message : "Algo deu errado.");
     } finally {
       setLoading(false);
       setOpen(false);

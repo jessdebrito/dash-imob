@@ -70,7 +70,7 @@ export const BathroomForm: React.FC<SettingsFromProps> = ({ initialData }) => {
       router.refresh();
       router.push(`/${params.storeId}/bathrooms`);
       toast.success(toastMessage);
-    } catch (err) {
+    } catch {
       toast.error("Algo deu errado.");
     } finally {
       setLoading(false);
@@ -86,7 +86,7 @@ export const BathroomForm: React.FC<SettingsFromProps> = ({ initialData }) => {
       router.refresh();
       router.push(`/${params.storeId}/bathrooms`);
       toast.success("Tamanho deletado.");
-    } catch (err) {
+    } catch {
       toast.error("Certifiqui-se de remover todos os vinculos com produtos.");
     } finally {
       setLoading(false);

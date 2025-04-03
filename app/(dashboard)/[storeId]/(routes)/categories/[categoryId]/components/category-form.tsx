@@ -82,7 +82,7 @@ export const CategoryForm: React.FC<SettingsFromProps> = ({
       router.push(`/${params.storeId}/categories`);
       toast.success(toastMessage);
     } catch (err) {
-      toast.error("Algo deu errado.");
+      toast.error(err instanceof Error ? err.message : "Algo deu errado.");
     } finally {
       setLoading(false);
     }
@@ -98,7 +98,9 @@ export const CategoryForm: React.FC<SettingsFromProps> = ({
       router.push(`/${params.storeId}/categories`);
       toast.success("Categoria deletada.");
     } catch (err) {
-      toast.error("Certifiqui-se de remover todos os vinculos com produtos.");
+      toast.error(
+        err instanceof Error ? err.message : "Certifiqui-se de remover todos os produtos primeiro."
+      );
     } finally {
       setLoading(false);
       setOpen(false);
