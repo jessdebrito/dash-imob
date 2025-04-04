@@ -6,6 +6,7 @@ import { Overview } from "@/components/overview";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
+import prismadb from "@/lib/prismadb";
 import { formatter } from "@/lib/utils";
 import { CreditCard, DollarSign, Package } from "lucide-react";
 
@@ -15,6 +16,9 @@ const DashboardPage = async ({
   params: Promise<{ storeId: string }>;
 }) => {
   const { storeId } = await params;
+  const store = await prismadb.store.findFirst({
+    where: { id: storeId },
+  });
 
   const totalRevenue = await getTotalRevenue(storeId);
   const salesCount = await getSalesCount(storeId);

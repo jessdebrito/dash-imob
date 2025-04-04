@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ImagePlus, Trash } from "lucide-react";
 import Image from "next/image";
-import { CldUploadWidget, CloudinaryUploadWidgetResults } from "next-cloudinary";
+import { CldUploadWidget } from "next-cloudinary";
 
 interface ImageUploadProps {
   disabled?: boolean;
@@ -25,12 +25,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     setIsMounted(true);
   }, []);
 
-  const onUpload = (result: CloudinaryUploadWidgetResults) => {
-    if (typeof result.info === 'string') {
-      onChange(result.info);
-    } else if (result.info?.secure_url) {
-      onChange(result.info.secure_url);
-    }
+  const onUpload = (result: any) => {
+    onChange(result.info.secure_url);
   };
 
   if (!isMounted) {
@@ -52,14 +48,19 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 variant="destructive"
                 size="icon"
               >
-                <Trash className="h-4 w-4" />
+                <Trash className="w-4 h-4" />
               </Button>
             </div>
             <Image fill className="object-cover" alt="Image" src={url} />
           </div>
         ))}
       </div>
-      <CldUploadWidget onSuccess={onUpload} uploadPreset="seicizos">
+      <CldUploadWidget
+        onSuccess={(result: any) => {
+          onChange(result.info.secure_url);
+        }}
+        uploadPreset="seicizos"
+      >
         {({ open }) => {
           const onClick = () => {
             open();
@@ -69,7 +70,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             <Button
               type="button"
               disabled={disabled}
-              variant="secondary"
+              variant={"secondary"}
               onClick={onClick}
             >
               <ImagePlus className="h-4 w-4 mr-2" />
