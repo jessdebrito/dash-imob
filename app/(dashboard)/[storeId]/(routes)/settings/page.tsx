@@ -6,8 +6,9 @@ import { SettingsForm } from "./components/settings-form";
 export default async function SettingsPage({
   params,
 }: {
-  params: { storeId: string };
+  params: Promise<{ storeId: string }>;
 }) {
+  const { storeId } = await params;
   const { userId } = await auth();
 
   if (!userId) {
@@ -16,7 +17,7 @@ export default async function SettingsPage({
 
   const store = await prismadb.store.findFirst({
     where: {
-      id: params.storeId,
+      id: storeId,
       userId,
     },
   });

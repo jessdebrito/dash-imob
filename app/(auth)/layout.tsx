@@ -5,10 +5,9 @@ import BgLoginPage from "@/public/images/bg-login-page3.jpg";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
-  className?: string;
 }
 
-const AuthLayout = ({ children, className }: AuthLayoutProps) => {
+const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <div className="min-h-screen w-full h-full md:p-10  flex items-center justify-center bg-neutral-200">
     

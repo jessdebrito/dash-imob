@@ -1,9 +1,16 @@
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import prismadb from "@/lib/prismadb";
+import { Adtype } from "@prisma/client";
 
 import { AdtypeClient } from "./components/client";
 import { AdtypeColumn } from "./components/columns";
+
+interface AdtypeWithBillboard extends Adtype {
+  billboard: {
+    label: string;
+  };
+}
 
 const AdtypesPage = async ({
   params,
@@ -12,7 +19,7 @@ const AdtypesPage = async ({
 }) => {
   const { storeId } = await params;
 
-  const adtypes = await prismadb.adtype.findMany({
+  const adtypes: AdtypeWithBillboard[] = await prismadb.adtype.findMany({
     where: {
       storeId: storeId,
     },
@@ -24,7 +31,7 @@ const AdtypesPage = async ({
     },
   });
 
-  const formattedAdtypes: AdtypeColumn[] = adtypes.map((item) => ({
+  const formattedAdtypes: AdtypeColumn[] = adtypes.map((item: AdtypeWithBillboard) => ({
     id: item.id,
     name: item.name,
     billboardLabel: item.billboard.label,

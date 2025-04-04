@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import prismadb from "@/lib/prismadb";
+import { Bathroom } from "@prisma/client";
 
 import { BathroomClient } from "./components/client";
 import { BathroomColumn } from "./components/columns";
@@ -12,7 +13,7 @@ const BathroomsPage = async ({
 }) => {
   const { storeId } = await params;
 
-  const bathrooms = await prismadb.bathroom.findMany({
+  const bathrooms: Bathroom[] = await prismadb.bathroom.findMany({
     where: {
       storeId: storeId,
     },
@@ -22,7 +23,7 @@ const BathroomsPage = async ({
     },
   });
 
-  const formattedBathrooms: BathroomColumn[] = bathrooms.map((item) => ({
+  const formattedBathrooms: BathroomColumn[] = bathrooms.map((item: Bathroom) => ({
     id: item.id,
     name: item.name,
     value: item.value,

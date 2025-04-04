@@ -4,11 +4,13 @@ import { BillboardForm } from "./components/billboard-form";
 export default async function BillboardPage({
   params,
 }: {
-  params: { billboardId: string; storeId: string };
+  params: Promise<{ billboardId: string; storeId: string }>;
 }) {
+  const { billboardId } = await params;
+  
   const billboard = await prismadb.billboard.findUnique({
     where: {
-      id: params.billboardId,
+      id: billboardId,
     },
   });
 

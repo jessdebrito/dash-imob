@@ -4,11 +4,13 @@ import { ColorForm } from "./components/color-form";
 export default async function ColorPage({
   params,
 }: {
-  params: { colorId: string; storeId: string };
+  params: Promise<{ colorId: string; storeId: string }>;
 }) {
+  const { colorId } = await params;
+  
   const color = await prismadb.color.findUnique({
     where: {
-      id: params.colorId,
+      id: colorId,
     },
   });
 

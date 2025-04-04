@@ -16,13 +16,15 @@ export async function OPTIONS() {
 }
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     storeId: string;
-  };
+  }>;
 }
 
 export async function POST(req: Request, { params }: RouteParams) {
   const { productIds } = await req.json();
+  const { storeId } = await params;
+  
   if (!productIds || productIds.length === 0) {
     return new NextResponse("Product ids are required", { status: 400 });
   }
@@ -52,7 +54,7 @@ export async function POST(req: Request, { params }: RouteParams) {
 
   const order = await prismadb.order.create({
     data: {
-      storeId: params.storeId,
+      storeId: storeId,
       isPaid: false,
       orderItems: {
         create: productIds.map((productId: string) => ({

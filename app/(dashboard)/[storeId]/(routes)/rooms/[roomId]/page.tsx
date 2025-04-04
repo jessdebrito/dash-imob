@@ -4,11 +4,13 @@ import { RoomForm } from "./components/room-form";
 export default async function RoomPage({
   params,
 }: {
-  params: { roomId: string; storeId: string };
+  params: Promise<{ roomId: string; storeId: string }>;
 }) {
+  const { roomId } = await params;
+  
   const room = await prismadb.room.findUnique({
     where: {
-      id: params.roomId,
+      id: roomId,
     },
   });
 
