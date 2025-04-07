@@ -1,6 +1,19 @@
 # Dash Genie - Dashboard e CMS
+<div align="center">
+<a href="https://dash-imob.vercel.app/">
+<img width="90%" src="public/images/desktop-gif.gif">
+
+</a>
+<p><a href="https://dash-imob.vercel.app/">
+Visualizar Prévia
+</a></p>
+</div>
 
 O Genie tem como objetivo facilitar a gestão de e-commerce em tempo real. Acompanhado de um dashboard moderno e responsivo para acompanhar o financeiro, bem como uma tabela com a lista de vendas e pendencias. Construído com Next.js 14 e tecnologias modernas.  usando a tecnologia  
+<div align="center">
+<img width="40%" src="public/images/gif-mobile.gif">
+<img width="40%" src="public/images/dash-mobile.gif">
+</div>
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -90,6 +103,8 @@ yarn dev
 3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
+
+
 
 ## 📞 Contato
 
