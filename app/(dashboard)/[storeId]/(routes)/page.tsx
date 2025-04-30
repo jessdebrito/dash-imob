@@ -31,9 +31,9 @@ const DashboardPage = async ({
         <Heading title="Dashboard" description="Visão geral de loja" />
         <Separator />
         <div className="grid grid-cols-3 gap-4">
-          <Card>
+          <Card className="bg-[url('/images/svg.svg')] bg-cover bg-center">
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium">
+              <CardTitle className="text-sm font-medium ">
                 Receita
               </CardTitle>
               <DollarSign className="w-4 h-4 text-muted-foreground" />
@@ -44,7 +44,7 @@ const DashboardPage = async ({
               </div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-[url('/images/svg.svg')] bg-cover bg-center">
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
               <CardTitle className="text-sm font-medium">Vendas</CardTitle>
               <CreditCard className="w-4 h-4 text-muted-foreground" />
@@ -53,7 +53,7 @@ const DashboardPage = async ({
               <div className="text-lg md:text-2xl font-bold">+{salesCount}</div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-[url('/images/svg.svg')] bg-cover bg-center">
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
               <CardTitle className="text-sm font-medium">
                 Estoque
