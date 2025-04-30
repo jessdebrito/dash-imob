@@ -42,13 +42,13 @@ const CallToAction = () => {
   }, [currentPhrase, isDeleting, phraseIndex, currentIndex, phrases]);
 
   return (
-    <div className="py-6">
+    <div className="p-6">
       <h1 className="text-4xl">
         Nunca foi tão <i>tranquilo</i> gerenciar e-commerces.
       </h1>
       <h2 className="text-2xl">Platafórma de gerenciamento multi-loja.</h2>
 
-      <Button className="min-w-1/3 bg-transparent border-1 rounded-3xl border-neutral-700 text-neutral-700 text-lg mt-2 font-light">
+      <Button variant={"ghost"} className="min-w-1/3 hover:bg-transparent border-1 rounded-3xl text-lg mt-2 font-light">
       Gerencie {currentPhrase}
       </Button>
     </div>
