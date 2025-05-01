@@ -10,13 +10,13 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <div className="w-full h-screen overflow-hidden py-6 flex flex-col justify-center items-center">
+    <div className="w-full h-full overflow-hidden py-8 flex flex-col justify-center items-center">
       <CallToAction />
 
       <div className="w-full h-full md:grid md:grid-cols-2 justify-center items-center">
         <div className="flex flex-col w-full justify-center items-center">
-          <div className="bg-white/50 md:w-[42%] w-[80%] h-4 rounded-t-3xl"></div>
-          <div className="bg-white/80 md:w-[48%] w-[89%] h-4 rounded-t-3xl"></div>
+          <div className="bg-neutral-400/20 md:w-[42%] w-[76%] h-4 rounded-t-3xl"></div>
+          <div className="bg-neutral-400/40 md:w-[48%] w-[85%] h-4 rounded-t-3xl"></div>
           {children}
         </div>
 
