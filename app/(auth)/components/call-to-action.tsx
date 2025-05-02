@@ -46,7 +46,7 @@ const CallToAction = () => {
       <h1 className="text-4xl">
         Nunca foi tão <i>tranquilo</i> gerenciar e-commerces.
       </h1>
-      <h2 className="text-2xl">Platafórma de gerenciamento multi-loja.</h2>
+      <h2 className="text-2xl">Plataforma de gerenciamento multi-loja.</h2>
 
       <Button variant={"ghost"} className="min-w-1/3 hover:bg-transparent border-1 rounded-3xl text-lg mt-2 font-light">
       Gerencie {currentPhrase}
