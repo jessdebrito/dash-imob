@@ -35,7 +35,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="pt-br" suppressHydrationWarning>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -44,7 +44,7 @@ export default function RootLayout({
           >
             <ToastProvider />
             <ModalProvider />
-            {children}
+            <main className="flex-1">{children}</main>
             <Footer />
           </ThemeProvider>
           <Analytics />
