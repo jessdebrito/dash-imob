@@ -10,10 +10,10 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <div className="w-full  overflow-hidden py-8 flex my-6 flex-col justify-center items-center">
+    <div className="w-full flex-1 overflow-hidden pt-14 flex flex-col justify-center items-center">
       <CallToAction />
 
-      <div className="w-full h-full md:grid md:grid-cols-2 justify-center items-center">
+      <div className="w-full flex-1 md:grid md:grid-cols-2 justify-center items-center">
         <div className="flex flex-col w-full justify-center items-center">
           <div className="flex flex-col items-center w-fit mx-auto">
             <div className="bg-neutral-400/20 w-[80%] h-4 rounded-t-3xl"></div>
@@ -22,11 +22,11 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
           </div>
         </div>
 
-        <div className="hidden md:block w-full h-full relative z-0 py-8">
+        <div className="hidden md:block w-full h-full relative z-0 pt-8">
           <Image
             src={BgLoginPage}
             alt="Login page image"
-            className=" hidden md:block object-cover absolute w-full right-[-100px] top-1/2 -translate-y-1/2 rounded-2xl shadow-2xl"
+            className="hidden md:block object-cover absolute inset-0 w-full h-full right-[-100px] rounded-t-2xl shadow-2xl"
             priority
           />
         </div>

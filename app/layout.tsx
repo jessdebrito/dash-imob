@@ -44,7 +44,7 @@ export default function RootLayout({
           >
             <ToastProvider />
             <ModalProvider />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 flex flex-col">{children}</main>
             <Footer />
           </ThemeProvider>
           <Analytics />
